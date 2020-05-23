@@ -1,7 +1,5 @@
-# HEROKU DEPLOY
-[Open](https://dinamokid-dialog-vue.herokuapp.com/)
-
-# dialogs-vue
+# Heroku deploy
+[Open deploy](https://dinamokid-dialog-vue.herokuapp.com/)
 
 ## Project setup
 ```
