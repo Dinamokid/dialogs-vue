@@ -9,6 +9,8 @@ import '@fortawesome/fontawesome-free/js/all.js'
 
 import App from './App.vue'
 
+export const bus = new Vue();
+
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 

@@ -2,42 +2,9 @@
   <div class="container">
     <h1 class="ml-3 mt-4 mb-4">All dialogs</h1>
     <div class="col-md-12 mt-4 p-0">
-      <div id="chatroom" class="mb-2">
-        <div
-          class="mt-2 pb-3 border-bottom cursor-pointer position-relative"
-          v-for="(dialog, key) in dialogs"
-          :key="dialog.message"
-        >
-          <div class="d-flex">
-            <div class="col-1 mt-2">
-              <div
-                v-bind:style="{backgroundImage: 'url(' + dialog.dialogAvatar + ')'}"
-                style="background-size:cover; background-position:center; width: 70px; height: 70px; border-radius: 100%;"
-              ></div>
-            </div>
-            <div class="col-9">
-              <div>
-                <b class="w-100">{{dialog.dialogName}}</b>
-              </div>
-              <div class="d-flex pt-2 align-items-center">
-                <div
-                  v-bind:style="{backgroundImage: 'url(' + dialog.lastAuthorAvatar + ')'}"
-                  style="background-position:center; min-width: 40px; min-height: 40px; border-radius: 100%;"
-                ></div>
-                <p class="m-0 ml-2" style="height:45px; overflow: hidden;">{{dialog.message}}</p>
-              </div>
-            </div>
-            <div class="col-2 d-flex align-items-center">
-              <div>{{dialog.date}}</div>
-            </div>
-          </div>
-          <div
-            class="position-absolute"
-            style="top: 0; right: 0; cursor:pointer"
-            v-on:click="removeDialog(key)"
-          >
-            <i class="fas fa-times"></i>
-          </div>
+      <div class="mb-2">
+        <div v-for="(dialog, index) in dialogs" v-bind:key="index">
+          <DialogItem v-bind:dialog="dialog" v-bind:index="index" />
         </div>
       </div>
     </div>
@@ -46,18 +13,26 @@
 </template>
 
 <script>
+import { bus } from "../main";
+import DialogItem from "./DialogItem";
+
 export default {
   name: "Dialogs",
+
+  components: {
+    DialogItem
+  },
+
   data: function() {
     return {
       dialogs: [
         {
           dialogName: "Авдоничев Александр",
-          dialogAvatar: "https://picsum.photos/seed/1/300",
+          dialogAvatar: "https://picsum.photos/seed/1/400",
           date: "20 May 2020",
           message:
             "Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit ",
-          lastAuthorAvatar: "https://picsum.photos/seed/2/300"
+          lastAuthorAvatar: "https://picsum.photos/seed/2/400"
         }
       ]
     };
@@ -68,8 +43,8 @@ export default {
       "Свелий Крюк",
       "21 May 2020",
       "test",
-      "https://picsum.photos/seed/3/300",
-      "https://picsum.photos/seed/4/300"
+      "https://picsum.photos/seed/3/400",
+      "https://picsum.photos/seed/4/400"
     );
   },
 
@@ -94,6 +69,12 @@ export default {
       tempDialog.date = date;
       tempDialog.lastAuthorAvatar = lastAuthorAvatar;
     }
+  },
+
+  created() {
+    bus.$on('removeDialog', data => {
+      this.removeDialog(data)
+    })
   }
 };
 </script>
