@@ -1,8 +1,6 @@
 # HEROKU DEPLOY
 [Open](https://dinamokid-dialog-vue.herokuapp.com/)
 
-=================
-
 # dialogs-vue
 
 ## Project setup
