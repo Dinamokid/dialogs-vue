@@ -35,11 +35,11 @@
 <script>
 export default {
   name: "Layout",
-  mounted: function(){
-      if(this.$route.fullPath == '/'){
-          this.$router.push('Index')
-      }
-  },
+  mounted: function() {
+    if (this.$route.fullPath == "/") {
+      this.$router.push("Index");
+    }
+  }
 };
 </script>
 
@@ -49,6 +49,10 @@ export default {
   height: 100vh;
   background-color: black;
   font-weight: 600;
+
+  @media screen and(max-width: 768px) {
+    height: 40vh;
+  }
 
   & ul {
     list-style: none;

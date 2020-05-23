@@ -1,5 +1,5 @@
 <template>
-  <div class="my-5">
+  <div class="my-4">
     <h1>All dialogs</h1>
     <div class="col-md-12 mt-4 p-0">
       <div class="mb-2">
@@ -16,7 +16,7 @@ import { bus } from "../main";
 import DialogItem from "./DialogItem";
 
 export default {
-  name: "Dialogs",
+  name: "DialogList",
 
   components: {
     DialogItem
@@ -64,6 +64,7 @@ export default {
 
     updateDialog(index, message, date, lastAuthorAvatar) {
       var tempDialog = this.dialogs[index];
+      console.log(tempDialog)
       tempDialog.message = message;
       tempDialog.date = date;
       tempDialog.lastAuthorAvatar = lastAuthorAvatar;
@@ -71,9 +72,12 @@ export default {
   },
 
   created() {
-    bus.$on('removeDialog', data => {
-      this.removeDialog(data)
-    })
+    bus.$on("removeDialog", data => {
+      this.removeDialog(data);
+    });
+    bus.$on("updateDialog", data => {
+      this.updateDialog(data);
+    });
   }
 };
 </script>

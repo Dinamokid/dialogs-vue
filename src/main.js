@@ -9,14 +9,17 @@ import '@fortawesome/fontawesome-free/js/all.js'
 
 import App from './App.vue'
 
-import Dialogs from "./components/Dialogs.vue";
 import Index from "./components/Index.vue";
+import DialogList from "./components/DialogList.vue";
+import Dialog from "./components/Dialog.vue";
+
 
 export const bus = new Vue();
 
 const routes = [
   { path: '/Index', component: Index },
-  { path: '/Dialogs', component: Dialogs }
+  { path: '/Dialogs', component: DialogList },
+  { path: '/Dialog/:id', component: Dialog, props: true }
 ]
 
 const router = new VueRouter({
