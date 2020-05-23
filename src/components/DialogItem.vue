@@ -1,13 +1,13 @@
 <template>
-  <div class="position-relative">
+  <div class="position-relative dialogItem">
     <div class="d-flex">
-      <div class="col-1 mt-2">
+      <div class="col-1 mt-2 pl-0">
         <div
           v-bind:style="{backgroundImage: 'url(' + dialog.dialogAvatar + ')'}"
           style="background-size:cover; background-position:center; width: 70px; height: 70px; border-radius: 100%;"
         ></div>
       </div>
-      <div class="col-9">
+      <div class="col-8">
         <div>
           <b class="w-100">{{dialog.dialogName}}</b>
         </div>
@@ -40,23 +40,26 @@ export default {
   name: "DialogItem",
 
   data: function() {
-    return {     
-
-    };
+    return {};
   },
 
   props: {
-      dialog: Object,
-      index: Number,
+    dialog: Object,
+    index: Number
   },
 
-  mounted: function() {
-  },
+  mounted: function() {},
 
   methods: {
     removeDialog() {
-        bus.$emit("removeDialog", this.index);
-    },
+      bus.$emit("removeDialog", this.index);
+    }
   }
 };
 </script>
+
+<style lang="scss">
+.dialogItem {
+  margin-top: 20px;
+}
+</style>

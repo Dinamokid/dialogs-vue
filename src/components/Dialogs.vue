@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="ml-3 mt-4 mb-4">All dialogs</h1>
+  <div class="my-5">
+    <h1>All dialogs</h1>
     <div class="col-md-12 mt-4 p-0">
       <div class="mb-2">
         <div v-for="(dialog, index) in dialogs" v-bind:key="index">
@@ -8,7 +8,6 @@
         </div>
       </div>
     </div>
-    <button v-on:click="updateDialog(0,'ты че пес', '21 May 2020', 'https://picsum.photos/seed/1/300')">Click me!</button>
   </div>
 </template>
 
@@ -27,7 +26,7 @@ export default {
     return {
       dialogs: [
         {
-          dialogName: "Авдоничев Александр",
+          dialogName: "Avdonichev Aleksandr",
           dialogAvatar: "https://picsum.photos/seed/1/400",
           date: "20 May 2020",
           message:
@@ -40,7 +39,7 @@ export default {
 
   mounted: function() {
     this.addDialog(
-      "Свелий Крюк",
+      "Kruck Savelii",
       "21 May 2020",
       "test",
       "https://picsum.photos/seed/3/400",

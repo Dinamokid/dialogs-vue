@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Dialogs/>
+    <Layout />
   </div>
 </template>
 
 <script>
-import Dialogs from './components/Dialogs.vue'
+import Layout from './components/Layout.vue'
 
 export default {
   name: 'App',
   components: {
-    Dialogs
+    Layout
   }
 }
 </script>
