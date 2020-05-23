@@ -21,7 +21,7 @@
       </ul>
 
       <div class="position-absolute" style="bottom: 0; right: 0; left: 0">
-        <p class="text-white text-center">Footer text</p>
+        <p class="text-white text-center small">From Dinamokid to Dinamokid</p>
       </div>
     </div>
     <div class="col-md-10">
@@ -57,11 +57,11 @@ export default {
     & li {
       border-bottom: 2px solid white;
       cursor: pointer;
-      margin-top: 15px;
       text-align: center;
 
       & a {
         color: white;
+        line-height: 2.5em;
       }
     }
   }

@@ -61,5 +61,6 @@ export default {
 <style lang="scss">
 .dialogItem {
   margin-top: 20px;
+  cursor: pointer;
 }
 </style>
