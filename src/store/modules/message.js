@@ -62,6 +62,9 @@ export default {
     messagesCount(state) {
       return state.messages.length
     },
+    getLastMessageByDialogId: state => id => {
+      return state.messages.filter(t=>t.dialogId == id).slice(-1)[0]
+    }
   },
   strict: process.env.NODE_ENV !== 'production'
 }

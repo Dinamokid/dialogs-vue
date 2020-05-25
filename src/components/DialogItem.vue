@@ -18,7 +18,7 @@
               v-bind:style="{backgroundImage: 'url(' + dialog.lastAuthorAvatar + ')'}"
               style="background-position:center; min-width: 40px; min-height: 40px; border-radius: 100%;"
             ></div>
-            <p class="m-0 ml-2" style="height:26px; overflow: hidden;">{{dialog.message}}</p>
+            <p class="m-0 ml-2" style="height:26px; overflow: hidden;">{{message.text}}</p>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "DialogItem",
@@ -42,6 +42,15 @@ export default {
   props: {
     dialog: Object,
     index: Number
+  },
+
+  computed:{
+    ...mapGetters(["getLastMessageByDialogId"]),
+    message: {
+      get() {
+        return this.getLastMessageByDialogId(this.index);
+      }
+    }
   },
 
   methods: {
