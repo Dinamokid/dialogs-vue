@@ -3,8 +3,8 @@
     <h1>All dialogs</h1>
     <div class="col-md-12 mt-4 p-0">
       <div class="mb-2">
-        <div v-for="(dialog, index) in dialogs" v-bind:key="index">
-          <DialogItem v-bind:dialog="dialog" v-bind:index="index" />
+        <div v-for="dialog in allDialogs" v-bind:key="dialog.id">
+          <DialogItem v-bind:dialog="dialog" v-bind:index="dialog.id" />
         </div>
       </div>
     </div>
@@ -12,44 +12,22 @@
 </template>
 
 <script>
-import { bus } from "../main";
+import { mapGetters, mapActions } from "vuex";
 import DialogItem from "./DialogItem";
 
 export default {
   name: "DialogList",
-
   components: {
     DialogItem
   },
-
-  data: function() {
-    return {
-      dialogs: [
-        {
-          dialogName: "Avdonichev Aleksandr",
-          dialogAvatar: "https://picsum.photos/seed/1/400",
-          date: "20 May 2020",
-          message:
-            "Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit ",
-          lastAuthorAvatar: "https://picsum.photos/seed/2/400"
-        }
-      ]
-    };
-  },
-
-  mounted: function() {
-    this.addDialog(
-      "Kruck Savelii",
-      "21 May 2020",
-      "test",
-      "https://picsum.photos/seed/3/400",
-      "https://picsum.photos/seed/4/400"
-    );
-  },
-
+  computed: mapGetters(["allDialogs"]),
   methods: {
+    ...mapActions(["removeDialog"]),
+    ...mapGetters(["dialogsLenght"]),
+
     addDialog(dialogName, date, message, dialogAvatar, lastAuthorAvatar) {
-      this.dialogs.push({
+      this.addDialog({
+        id: this.dialogsLenght,
         dialogName,
         date,
         message,
@@ -57,27 +35,6 @@ export default {
         lastAuthorAvatar
       });
     },
-
-    removeDialog(index) {
-      this.dialogs.splice(index, 1);
-    },
-
-    updateDialog(index, message, date, lastAuthorAvatar) {
-      var tempDialog = this.dialogs[index];
-      console.log(tempDialog)
-      tempDialog.message = message;
-      tempDialog.date = date;
-      tempDialog.lastAuthorAvatar = lastAuthorAvatar;
-    }
   },
-
-  created() {
-    bus.$on("removeDialog", data => {
-      this.removeDialog(data);
-    });
-    bus.$on("updateDialog", data => {
-      this.updateDialog(data);
-    });
-  }
 };
 </script>

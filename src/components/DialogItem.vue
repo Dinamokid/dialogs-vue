@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="position-relative dialogItem" @click="openDialog()">
+  <div class="position-relative dialogItem">
+    <div @click="openDialog()">
       <div class="d-flex">
         <div class="mt-2 pl-0">
           <div
@@ -22,40 +22,32 @@
           </div>
         </div>
       </div>
-      <div
-        class="position-absolute delete"
-        style="top: 0; right: -10px; cursor:pointer"
-        v-on:click="removeDialog()"
-      >
-        <i class="fas fa-times"></i>
-      </div>
+    </div>
+    <div
+      class="position-absolute delete"
+      style="top: 0; right: -10px; cursor:pointer"
+      v-on:click="removeDialog(index)"
+    >
+      <i class="fas fa-times"></i>
     </div>
   </div>
 </template>
 
 <script>
-import { bus } from "../main";
+import { mapActions } from "vuex";
 
 export default {
   name: "DialogItem",
-
-  data: function() {
-    return {};
-  },
 
   props: {
     dialog: Object,
     index: Number
   },
 
-  mounted: function() {},
-
   methods: {
-    removeDialog() {
-      bus.$emit("removeDialog", this.index);
-    },
+    ...mapActions(["removeDialog"]),
 
-    openDialog(){
+    openDialog() {
       this.$router.push({ path: `/Dialog/${this.index}` });
     }
   }

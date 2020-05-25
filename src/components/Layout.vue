@@ -33,13 +33,20 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Layout",
-  mounted: function() {
+  async mounted() {
     if (this.$route.fullPath == "/") {
       this.$router.push("Index");
     }
-  }
+    this.fetchMessages();
+    this.fetchDialogs();
+  },
+  methods: {
+    ...mapActions(["fetchMessages", "fetchDialogs"]),
+  },
 };
 </script>
 

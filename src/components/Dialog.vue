@@ -1,8 +1,8 @@
 <template>
   <div class="position-relative" style="height: 100vh;">
     <div id="chat-list">
-      <div v-for="(message, index) in messages" v-bind:key="index">
-        <Message v-bind:message="message" v-bind:index="index" />
+      <div v-for="message in messages" v-bind:key="message.id">
+        <Message v-bind:message="message" v-bind:index="message.id" />
       </div>
     </div>
     <div class="position-absolute" style="bottom: 0; left: 0; right: 0;">
@@ -16,45 +16,48 @@
 
 <script>
 import Message from "./Message";
-import { bus } from "../main";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Dialog",
   props: ["id"],
   data: function() {
     return {
-      messages: [
-        {
-          id: 1,
-          text: "Ку",
-          time: "20:20",
-          authorAvatar: "https://picsum.photos/seed/1/400",
-          authorName: "Aleksandr"
-        }
-      ],
       input: ""
     };
   },
   components: {
     Message
   },
+  computed: {
+    ...mapGetters(["getMessagesFromDialog"]),
+    messages: {
+      get() {
+        return this.getMessagesFromDialog(this.id);
+      }
+    }
+  },
   methods: {
+    ...mapActions(["addMessage"]),
+    ...mapGetters(["messagesCount"]),
+
     addMessage(text) {
       let today = new Date();
-      this.messages.push({
-        id: this.messages.length,
+      this.$store.dispatch("addMessage", {
+        id: this.messagesCount(),
         text,
+        dialogId: this.id,
         time: `${today.getHours()}:${
           today.getMinutes() < 10
             ? "0" + today.getMinutes()
             : today.getMinutes()
         }`,
-        authorAvatar: "https://picsum.photos/seed/2/400",
-        authorName: "Savelii"
+        authorAvatar: "https://picsum.photos/seed/1/400",
+        authorName: "Aleksandr"
       });
-      bus.$emit("updateDialog", this.$route.params.id, this.input, today, "https://picsum.photos/seed/2/400");
+      this.input = "";
     }
-  }
+  },
 };
 </script>
 
