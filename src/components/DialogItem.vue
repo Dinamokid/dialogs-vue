@@ -15,7 +15,7 @@
           </div>
           <div class="d-flex pt-2 align-items-center">
             <div
-              v-bind:style="{backgroundImage: 'url(' + dialog.lastAuthorAvatar + ')'}"
+              v-bind:style="{backgroundImage: 'url(' + message.authorAvatar + ')'}"
               style="background-position:center; min-width: 40px; min-height: 40px; border-radius: 100%;"
             ></div>
             <p class="m-0 ml-2" style="height:26px; overflow: hidden;">{{message.text}}</p>
