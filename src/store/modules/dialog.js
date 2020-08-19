@@ -7,7 +7,6 @@ export default {
           id: 0,
           dialogName: "Savelii",
           dialogAvatar: "https://picsum.photos/seed/2/400",
-          date: "20 May 2020",
           message:
             "Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit ",
           lastAuthorAvatar: "https://picsum.photos/seed/2/400"
@@ -16,7 +15,6 @@ export default {
           id: 1,
           dialogName: "Sergey",
           dialogAvatar: "https://picsum.photos/seed/3/400",
-          date: "21 May 2020",
           message:
             "Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit ",
           lastAuthorAvatar: "https://picsum.photos/seed/3/400"

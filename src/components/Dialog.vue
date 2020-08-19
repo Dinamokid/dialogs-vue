@@ -42,16 +42,12 @@ export default {
     ...mapGetters(["messagesCount"]),
 
     addMessage(text) {
-      let today = new Date();
+      let today = new Date().toISOString();
       this.$store.dispatch("addMessage", {
         id: this.messagesCount(),
         text,
         dialogId: this.id,
-        time: `${today.getHours()}:${
-          today.getMinutes() < 10
-            ? "0" + today.getMinutes()
-            : today.getMinutes()
-        }`,
+        dateTime: today,
         authorAvatar: "https://picsum.photos/seed/1/400",
         authorName: "Aleksandr"
       });

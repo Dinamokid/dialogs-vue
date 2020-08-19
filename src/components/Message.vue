@@ -11,7 +11,7 @@
         <div class="ml-3">
           <div>
             <span class="bold mr-1">{{message.authorName}}</span>
-            {{message.time}}
+            {{new Date(message.dateTime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}}
           </div>
           <div>{{message.text}}</div>
         </div>

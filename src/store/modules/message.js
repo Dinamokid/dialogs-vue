@@ -7,7 +7,7 @@ export default {
           id: 0,
           dialogId: 0,
           text: "Ку",
-          time: "20:20",
+          dateTime: "2020-08-15T19:20:30Z",
           authorAvatar: "https://picsum.photos/seed/1/400",
           authorName: "Aleksandr"
         },
@@ -15,7 +15,7 @@ export default {
           id: 1,
           dialogId: 0,
           text: "Ку!",
-          time: "20:21",
+          dateTime: "2020-08-15T19:21:30Z",
           authorAvatar: "https://picsum.photos/seed/2/400",
           authorName: "Savelii"
         },
@@ -23,7 +23,7 @@ export default {
           id: 2,
           dialogId: 1,
           text: "hi",
-          time: "22:20",
+          dateTime: "2020-08-15T19:22:30Z",
           authorAvatar: "https://picsum.photos/seed/1/400",
           authorName: "Aleksandr"
         },
@@ -31,7 +31,7 @@ export default {
           id: 3,
           dialogId: 1,
           text: "hi!",
-          time: "13:21",
+          dateTime: "2020-08-15T19:23:30Z",
           authorAvatar: "https://picsum.photos/seed/3/400",
           authorName: "Sergey"
         },
@@ -48,7 +48,6 @@ export default {
       state.messages = messages
     },
     addMessage(state, newMessage) {
-      console.log("произошло дополнение");
       state.messages.push(newMessage)
     },
   },
@@ -63,7 +62,9 @@ export default {
       return state.messages.length
     },
     getLastMessageByDialogId: state => id => {
-      return state.messages.filter(t=>t.dialogId == id).slice(-1)[0]
+      let msgObj = state.messages.filter(t=>t.dialogId == id).slice(-1)[0];
+      msgObj.dateTime = new Date(msgObj.dateTime);
+      return msgObj
     }
   },
   strict: process.env.NODE_ENV !== 'production'

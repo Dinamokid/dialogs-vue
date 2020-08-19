@@ -11,7 +11,7 @@
         <div class="ml-3 w-100">
           <div class="d-flex">
             <b class="w-100">{{dialog.dialogName}}</b>
-            <div class="mr-3 text-nowrap">{{dialog.date}}</div>
+            <div class="mr-3 text-nowrap">{{message.dateTime.toLocaleDateString()}}</div>
           </div>
           <div class="d-flex pt-2 align-items-center">
             <div
@@ -50,7 +50,7 @@ export default {
       get() {
         return this.getLastMessageByDialogId(this.index);
       }
-    }
+    },
   },
 
   methods: {
