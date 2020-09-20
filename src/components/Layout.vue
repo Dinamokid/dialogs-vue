@@ -25,9 +25,7 @@
       </div>
     </div>
     <div class="col-md-10">
-      <div class="container">
         <router-view></router-view>
-      </div>
     </div>
   </div>
 </template>

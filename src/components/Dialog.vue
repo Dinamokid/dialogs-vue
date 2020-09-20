@@ -7,7 +7,7 @@
     </div>
     <div class="position-absolute" style="bottom: 0; left: 0; right: 0;">
       <div class="d-flex justify-content-center pb-2">
-        <input type="text" v-model="input" class="w-50" />
+        <input type="text" v-model="input" class="w-75 w-md-50" />
         <button class="ml-2 btn btn-dark" v-on:click="addMessage(input)">Send</button>
       </div>
     </div>
@@ -57,8 +57,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #chat-list {
   height: 75vh;
+}
+
+.w-md-50 {
+  @media screen and (min-width: 768px){
+    width: 50% !important;
+  }
 }
 </style>
